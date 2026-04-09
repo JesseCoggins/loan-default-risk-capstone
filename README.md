@@ -10,7 +10,7 @@ This repository packages work originally completed as part of Western Governors 
 To what extent do financial characteristics such as loan amount, annual income, credit score, and debt-to-income ratio affect a borrower's likelihood of default?
 
 ## Dataset
-- Source: WGU-provided Loan Default dataset
+- Source: Loan Default dataset
 - Original size: 148,670 rows, 34 columns
 - Modeling set: 121,447 rows after removing records with missing values
 - Selected features: 13 predictors plus the binary target `Status`
@@ -58,7 +58,7 @@ To what extent do financial characteristics such as loan amount, annual income, 
 - This model is best framed as a decision-support tool for underwriting rather than a fully automated approval system.
 
 ## Included Files
-- `notebooks/DS_Capstone.ipynb`
+- `notebooks/loan_default_risk_model.ipynb`
 - `data/Loan Default Data.xlsx`
 - `requirements.txt`
 
