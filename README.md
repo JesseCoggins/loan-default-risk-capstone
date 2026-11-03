@@ -46,6 +46,12 @@ To what extent do financial characteristics such as loan amount, annual income, 
 - F1-score: 0.362
 - ROC-AUC: 0.737
 
+## Report and stakeholder presentation
+
+The [full coursework report](docs/loan-default-report.pdf) documents the selection of 13 predictors, complete-case cleaning, model tuning and held-out evaluation. The [14-slide stakeholder presentation](docs/loan-default-presentation.pdf) translates the result into an underwriting decision. Of 2,973 defaults in the test set, the model flagged 787 and missed 2,186. It also flagged 593 loans that were repaid.
+
+The evaluation measures ranking and classification on one historical dataset. It does not establish the significance of an individual feature or measure avoided losses.
+
 ## Selected Visuals
 
 ![Capstone report visual 1](assets/report-extracts/report_image_01.png)
