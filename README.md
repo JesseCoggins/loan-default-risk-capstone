@@ -1,72 +1,33 @@
-# Loan Default Risk Capstone
+# Loan default risk capstone
 
-## Overview
-This project predicts borrower loan default status using a Random Forest classifier trained on 148,670 historical loan records. The goal is to support credit risk review by identifying borrowers with elevated default risk before approval.
+**How much work would a default-risk score send to an underwriting team?** I built a class-weighted Random Forest to flag loans for manual review. In the held-out test set it flagged **1,380 loans**. Of those, 787 defaulted and 593 were repaid. Another 2,186 defaults went unflagged. Those counts show the workload and the tradeoff a lender would face at the evaluated threshold.
 
-## Academic Context
-Completed during my M.S. in Data Analytics at Western Governors University (WGU), then packaged here as a public portfolio project. Screenshots from the original written submission are preserved in `assets/report-extracts/`.
+[View the stakeholder presentation](docs/loan-default-presentation.pdf) · [Read the full report](docs/loan-default-report.pdf) · [Inspect the modeling notebook](notebooks/loan_default_risk_model.ipynb)
 
-## Business Question
-To what extent do financial characteristics such as loan amount, annual income, credit score, and debt-to-income ratio affect a borrower's likelihood of default?
+## Data and model development
 
-## Dataset
-- Source: Loan Default dataset
-- Original size: 148,670 rows, 34 columns
-- Modeling set: 121,447 rows after removing records with missing values
-- Selected features: 13 predictors plus the binary target `Status`
-- Class balance after cleaning: 101,631 non-default vs. 19,816 default
+The source workbook contains **148,670 historical records and 34 columns**. I selected 13 financial, loan and demographic predictors plus the default indicator, removed rows with missing values, and one-hot encoded eight categorical fields. That left **121,447 complete records**, including 19,816 defaults. Complete-case selection limits how well the results describe applicants with missing information. [Source workbook](data/Loan%20Default%20Data.xlsx)
 
-## Workflow
-1. Reduced the original dataset to 14 columns aligned to the research question
-2. Removed rows with missing values instead of imputing sensitive financial fields
-3. One-hot encoded 8 categorical variables
-4. Split the data with stratification into 70% train, 15% validation, and 15% test
-5. Trained a baseline Random Forest with `class_weight="balanced"`
-6. Tuned the model with `GridSearchCV` using 5-fold cross-validation and ROC-AUC scoring
-7. Evaluated the tuned model on an untouched test set
-
-## Model
-- Algorithm: Random Forest Classifier
-- Baseline model: `n_estimators=300`
-- Tuned model: `n_estimators=500`, `max_depth=None`, `max_features='sqrt'`, `min_samples_leaf=2`, `min_samples_split=2`
-- Hyperparameter search: 48 candidates, 240 total fits
+I used a stratified 70/15/15 split. The training set contained 85,012 records. A 300-tree class-weighted baseline was evaluated on 18,217 validation records. I searched 48 parameter combinations using five-fold cross-validation on training data, selected by ROC-AUC, and evaluated the tuned model on 18,218 test records. The selected forest used 500 trees, square-root feature sampling, unrestricted depth and a minimum of two samples per leaf.
 
 ## Results
-### Baseline Validation Performance
-- Accuracy: 0.853
-- Precision: 0.758
-- Recall: 0.148
-- F1-score: 0.248
-- ROC-AUC: 0.733
 
-### Tuned Test Performance
-- Accuracy: 0.847
-- Precision: 0.570
-- Recall: 0.265
-- F1-score: 0.362
-- ROC-AUC: 0.737
+| Metric | Baseline on validation | Tuned model on test |
+|---|---:|---:|
+| ROC-AUC | 0.733 | 0.737 |
+| Precision for default | 0.758 | 0.570 |
+| Recall for default | 0.148 | 0.265 |
+| F1 for default | 0.248 | 0.362 |
+| Accuracy | 0.853 | 0.847 |
 
-## Report and stakeholder presentation
+## Key takeaways
 
-The [full coursework report](docs/loan-default-report.pdf) documents the selection of 13 predictors, complete-case cleaning, model tuning and held-out evaluation. The [14-slide stakeholder presentation](docs/loan-default-presentation.pdf) translates the result into an underwriting decision. Of 2,973 defaults in the test set, the model flagged 787 and missed 2,186. It also flagged 593 loans that were repaid.
+The test score ranked loans above chance, but the selected threshold caught only **26.5% of defaults**. A team considering a different threshold should weigh the cost of missed defaults against how many more applications its underwriters can inspect. The two columns report different splits, so they cannot isolate the effect of tuning.
 
-The evaluation measures ranking and classification on one historical dataset. It does not establish the significance of an individual feature or measure avoided losses.
+This evaluation covers one historical dataset. A lending use case would also need external validation, subgroup performance checks and a review policy. Avoided losses were not measured.
 
-## Selected Visuals
+## Reproduce the analysis
 
-![Capstone report visual 1](assets/report-extracts/report_image_01.png)
+Install the [requirements](requirements.txt) in a Jupyter environment and run the notebook with `notebooks/` as the working directory. The workbook is included. The parameter search performs 240 fits. For a quicker review, open the saved test results or the report. [Original report figures](assets/report-extracts/)
 
-![Capstone report visual 2](assets/report-extracts/report_image_02.png)
-
-## Key Takeaways
-- The baseline model identified 14.8% of defaults on the validation split. The tuned model identified 26.5% on the separate test split (787 of 2,973 defaults). A comparison on the same split would be needed to isolate the effect of tuning.
-- The final ROC-AUC of 0.737 shows meaningful predictive power above random guessing.
-- This model is best framed as a decision-support tool for underwriting rather than a fully automated approval system.
-
-## Included Files
-- `notebooks/loan_default_risk_model.ipynb`
-- `data/Loan Default Data.xlsx`
-- `requirements.txt`
-
-## Note
-The dataset is included so the notebook runs with a repo-relative path.
+*Data Science Capstone for the M.S. in Data Analytics at Western Governors University (WGU), D606.*
