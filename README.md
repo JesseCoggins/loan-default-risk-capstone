@@ -59,7 +59,7 @@ The evaluation measures ranking and classification on one historical dataset. It
 ![Capstone report visual 2](assets/report-extracts/report_image_02.png)
 
 ## Key Takeaways
-- Hyperparameter tuning improved recall from 0.148 to 0.265, increasing the model's ability to identify true defaulters.
+- The baseline model identified 14.8% of defaults on the validation split. The tuned model identified 26.5% on the separate test split (787 of 2,973 defaults). A comparison on the same split would be needed to isolate the effect of tuning.
 - The final ROC-AUC of 0.737 shows meaningful predictive power above random guessing.
 - This model is best framed as a decision-support tool for underwriting rather than a fully automated approval system.
 
