@@ -2,7 +2,7 @@
 
 **How much work would a default-risk score send to an underwriting team?** I built a class-weighted Random Forest to flag loans for manual review. In the held-out test set it flagged **1,380 loans**. Of those, 787 defaulted and 593 were repaid. Another 2,186 defaults went unflagged. Those counts show the workload and the tradeoff a lender would face at the evaluated threshold.
 
-[View the stakeholder presentation](docs/loan-default-presentation.pdf) · [Read the full report](docs/loan-default-report.pdf) · [Inspect the modeling notebook](notebooks/loan_default_risk_model.ipynb)
+[View the stakeholder presentation — portfolio edition](docs/loan-default-presentation.pdf) · [Read the full report — portfolio edition](docs/loan-default-report.pdf) · [Inspect the modeling notebook](notebooks/loan_default_risk_model.ipynb)
 
 ## Data and model development
 
@@ -25,6 +25,10 @@ I used a stratified 70/15/15 split. The training set contained 85,012 records. A
 The test score ranked loans above chance, but the selected threshold caught only **26.5% of defaults**. A team considering a different threshold should weigh the cost of missed defaults against how many more applications its underwriters can inspect. The two columns report different splits, so they cannot isolate the effect of tuning.
 
 This evaluation covers one historical dataset. A lending use case would also need external validation, subgroup performance checks and a review policy. Avoided losses were not measured.
+
+## Public portfolio edition
+
+The report and 14-slide presentation are revised portfolio editions. They retain the submitted model results, correct the removed-row count to 27,223, distinguish validation from test comparisons, and qualify significance, overfitting and financial-benefit claims. The saved notebook has no training-accuracy calculation or individual-feature significance test; these editions do not claim either was established. The original coursework submissions remain unchanged locally.
 
 ## Reproduce the analysis
 
