@@ -2,7 +2,7 @@
 
 **How much work would a default-risk score send to an underwriting team?** I built a class-weighted Random Forest to flag loans for manual review. In the held-out test set it flagged **1,380 loans**. Of those, 787 defaulted and 593 were repaid. Another 2,186 defaults went unflagged. Those counts show the workload and the tradeoff a lender would face at the evaluated threshold.
 
-[View the stakeholder presentation — portfolio edition](docs/loan-default-presentation.pdf) · [Read the full report — portfolio edition](docs/loan-default-report.pdf) · [Inspect the modeling notebook](notebooks/loan_default_risk_model.ipynb)
+[View the stakeholder presentation](docs/loan-default-presentation.pdf) · [Read the full report](docs/loan-default-report.pdf) · [Inspect the modeling notebook](notebooks/loan_default_risk_model.ipynb)
 
 ## Data and model development
 
@@ -26,12 +26,8 @@ The test score ranked loans above chance, but the selected threshold caught only
 
 This evaluation covers one historical dataset. A lending use case would also need external validation, subgroup performance checks and a review policy. Avoided losses were not measured.
 
-## Public portfolio edition
-
-The report and 14-slide presentation are revised portfolio editions. They retain the submitted model results, correct the removed-row count to 27,223, distinguish validation from test comparisons, and qualify significance, overfitting and financial-benefit claims. The saved notebook has no training-accuracy calculation or individual-feature significance test; these editions do not claim either was established. The original coursework submissions remain unchanged locally.
-
 ## Reproduce the analysis
 
-Install the [requirements](requirements.txt) in a Jupyter environment and run the notebook with `notebooks/` as the working directory. The workbook is included. The parameter search performs 240 fits. For a quicker review, open the saved test results or the report. [Original report figures](assets/report-extracts/)
+Install the [requirements](requirements.txt) in a Jupyter environment and run the notebook with `notebooks/` as the working directory. The workbook is included. The parameter search performs 240 fits. For a quicker review, open the saved test results or the report. [Data preparation figures](assets/report-extracts/)
 
 *Data Science Capstone for the M.S. in Data Analytics at Western Governors University (WGU), D606.*
