@@ -2,6 +2,10 @@
 
 **How much work would a default-risk score send to an underwriting team?** I built a class-weighted Random Forest to flag loans for manual review. In the held-out test set it flagged **1,380 loans**. Of those, 787 defaulted and 593 were repaid. Another 2,186 defaults went unflagged. Those counts show the workload and the tradeoff a lender would face at the evaluated threshold.
 
+![Loan default ROC curve and held-out confusion matrix](assets/loan-model-evaluation.png)
+
+*ROC curve and confusion matrix for the held-out test set. The matrix uses the classification threshold reported below.*
+
 [View the stakeholder presentation](docs/loan-default-presentation.pdf) · [Read the full report](docs/loan-default-report.pdf) · [Inspect the modeling notebook](notebooks/loan_default_risk_model.ipynb)
 
 ## Data and model development
