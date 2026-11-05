@@ -1,4 +1,1 @@
-pandas
-numpy
-scikit-learn
-openpyxl
+-r requirements-verified.txt

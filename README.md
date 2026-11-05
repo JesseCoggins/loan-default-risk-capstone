@@ -32,4 +32,8 @@ This evaluation covers one historical dataset. A lending use case would also nee
 
 Install the [requirements](requirements.txt) in a Jupyter environment and run the notebook with `notebooks/` as the working directory. The workbook is included. The parameter search performs 240 fits. For a quicker review, open the saved test results or the report. [Data preparation figures](assets/report-extracts/)
 
+## Data and environment
+
+[Data origin and reuse notes](data/README.md). Install [requirements.txt](requirements.txt), which includes [the checked direct package versions](requirements-verified.txt). Data preparation and the selected 500-tree model evaluation were rerun on Python 3.13.1 with the pinned direct dependencies, reproducing the published test confusion matrix and ROC-AUC 0.73682. The 240-fit search and baseline were not rerun in this environment check. These are direct dependency pins, not a complete transitive lockfile.
+
 *Data Science Capstone for the M.S. in Data Analytics at Western Governors University (WGU), D606.*

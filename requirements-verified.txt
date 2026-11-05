@@ -1,0 +1,5 @@
+# Direct package versions used for the validation scope documented in README.md.
+pandas==2.2.3
+numpy==2.2.2
+scikit-learn==1.6.1
+openpyxl==3.1.5
