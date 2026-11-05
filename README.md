@@ -20,6 +20,8 @@ I used a stratified 70/15/15 split. The training set contained 85,012 records. A
 | F1 for default | 0.248 | 0.362 |
 | Accuracy | 0.853 | 0.847 |
 
+Always predicting no default would correctly classify **15,245 of 18,218 test loans (83.7%)**, versus **15,439 (84.7%)** for the model. The constant rule identifies no defaults. ROC-AUC, default recall and review workload therefore provide context beyond accuracy alone.
+
 ## Key takeaways
 
 The test score ranked loans above chance, but the selected threshold caught only **26.5% of defaults**. A team considering a different threshold should weigh the cost of missed defaults against how many more applications its underwriters can inspect. The two columns report different splits, so they cannot isolate the effect of tuning.
