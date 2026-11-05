@@ -34,6 +34,7 @@ Install the [requirements](requirements.txt) in a Jupyter environment and run th
 
 ## Data and environment
 
-[Data origin and reuse notes](data/README.md). Install [requirements.txt](requirements.txt), which includes [the checked direct package versions](requirements-verified.txt). Data preparation and the selected 500-tree model evaluation were rerun on Python 3.13.1 with the pinned direct dependencies, reproducing the published test confusion matrix and ROC-AUC 0.73682. The 240-fit search and baseline were not rerun in this environment check. These are direct dependency pins, not a complete transitive lockfile.
+Data: WGU capstone loan workbook; [source notes](data/README.md).  
+Install: `python -m pip install -r requirements.txt`; [environment details](requirements-verified.txt).
 
 *Data Science Capstone for the M.S. in Data Analytics at Western Governors University (WGU), D606.*

@@ -1,4 +1,8 @@
-# Direct package versions used for the validation scope documented in README.md.
+# Validation environment and scope
+# Data preparation and selected 500-tree model evaluation executed on Python 3.13.1. Reproduced
+# test matrix [[14652, 593], [2186, 787]] and ROC-AUC 0.7368234963. Baseline training and the
+# 240-fit search were outside this environment check.
+# Direct package versions used for these checks:
 pandas==2.2.3
 numpy==2.2.2
 scikit-learn==1.6.1
